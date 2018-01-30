@@ -6,7 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/orange-annotations/orange-annotations.iml" filepath="$PROJECT_DIR$/orange-annotations/orange-annotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/orange-compiler/orange-compiler.iml" filepath="$PROJECT_DIR$/orange-compiler/orange-compiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/orange-core/orange-core.iml" filepath="$PROJECT_DIR$/orange-core/orange-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orange-ui/orange-ui.iml" filepath="$PROJECT_DIR$/orange-ui/orange-ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/survey.iml" filepath="$PROJECT_DIR$/survey.iml" />
+      <module fileurl="file://$PROJECT_DIR$/survey-ec/survey-ec.iml" filepath="$PROJECT_DIR$/survey-ec/survey-ec.iml" />
     </modules>
   </component>
 </project>
