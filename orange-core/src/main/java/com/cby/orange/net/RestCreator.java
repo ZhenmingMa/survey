@@ -26,7 +26,7 @@ public class RestCreator {
     private static final class OKHttpHolder {
         private static final int TIME_OUT = 60;
         private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
-        private static final ArrayList<Interceptor> INTERCEPTORS = Orange.getConfiguration(ConfigKeys.INTERCEPTOR);
+        private static final ArrayList<Interceptor> INTERCEPTORS = null;
 
         private static OkHttpClient.Builder addInterceptor() {
             if (INTERCEPTORS != null && !INTERCEPTORS.isEmpty()) {

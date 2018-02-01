@@ -1,17 +1,13 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
-
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 26
-
-
-
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -30,5 +26,6 @@ dependencies {
     implementation project(':orange-core')
     implementation project(':orange-ui')
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'org.greenrobot:greendao:3.2.2'
 
 }

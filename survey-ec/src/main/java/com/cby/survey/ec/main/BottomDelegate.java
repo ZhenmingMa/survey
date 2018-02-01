@@ -15,6 +15,7 @@ public class BottomDelegate extends BaseBottomDelegate {
     @Override
     public LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder builder) {
         LinkedHashMap<BottomTabBean, BottomItemDelegate>  items = new LinkedHashMap<>();
+
         return items;
     }
 

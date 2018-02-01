@@ -25,4 +25,5 @@ dependencies {
     annotationProcessor project(':orange-compiler')
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     implementation project(':survey-ec')
+    implementation project(':orange-ui')
 }

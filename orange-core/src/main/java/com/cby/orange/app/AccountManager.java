@@ -12,7 +12,6 @@ public class AccountManager {
         SIGN_TAG
     }
 
-
     //保存用户登陆状态，登陆后调用
     public static void setSignState(boolean state){
         OrangePreference.setAppFlag(SignTag.SIGN_TAG.name(),state);

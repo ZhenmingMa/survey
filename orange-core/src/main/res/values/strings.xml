@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">orange</string>
+
+
+    <!--网络连接状态-->
+    <string name="network_connettions_error">请检查您的网络</string>
 </resources>
