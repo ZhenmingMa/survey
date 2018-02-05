@@ -41,7 +41,7 @@ public class MainActivity extends ProxyActivity implements ILauncherListener,ISi
         switch (tag){
             case SIGNED:
                 getSupportDelegate().pop();
-                getSupportDelegate().loadRootFragment(R.id.delegate_container,new MainDelegate());
+                getSupportDelegate().loadRootFragment(R.id.delegate_container,new BottomDelegate());
                 break;
             case NOT_SIGNED:
                 getSupportDelegate().startWithPop(new SignInDelegate());

@@ -9,6 +9,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.RegexUtils;
 import com.cby.orange.delegate.OrangeDelegate;
 import com.cby.orange.net.RestClient;
 import com.cby.orange.net.callback.IError;
@@ -109,7 +110,7 @@ public class NumberSignInDelegate extends OrangeDelegate {
 
         boolean isPass = true;
 
-        if (phone.isEmpty() || phone.length() != 11) {
+        if (RegexUtils.isMobileExact(phone)) {
             mPhone.setError("手机号码错误");
             isPass = false;
         } else {

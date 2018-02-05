@@ -18,6 +18,7 @@ public class MyApp extends Application {
         super.onCreate();
         Orange.init(this)
                 .withApiHost("http://101.200.53.112:8080/")
+//                .withApiHost("http://192.168.3.29:8080/")
                 .withWeChatAppId("123")
                 .withWeChatAppSecret("123123")
                 .withIcon(new FontAwesomeModule())

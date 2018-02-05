@@ -31,7 +31,7 @@ import butterknife.OnClick;
 
 public class LauncherDelegate extends OrangeDelegate implements ITimerListener {
     private Timer mTimer = null;
-    private int mCount = 3;
+    private int mCount = 1;
     private ILauncherListener mILauncherListener;
 
     @BindView(R2.id.tv_launcher_timer)
