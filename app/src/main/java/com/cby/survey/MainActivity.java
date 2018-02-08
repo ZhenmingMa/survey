@@ -53,8 +53,8 @@ public class MainActivity extends ProxyActivity implements ILauncherListener,ISi
 
     @Override
     public void onSignInSuccess() {
-        Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
-        getSupportDelegate().startWithPop(new BottomDelegate());
+        getSupportDelegate().pop();
+        getSupportDelegate().loadRootFragment(R.id.delegate_container,new BottomDelegate());
     }
 
     @Override

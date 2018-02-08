@@ -13,7 +13,5 @@ public enum  IndexItemFields {
     QUESTIONS,
     COUNT,
     CREATETIME,
-    TIME,
-    STARTTIME,
     ENDTIME
 }

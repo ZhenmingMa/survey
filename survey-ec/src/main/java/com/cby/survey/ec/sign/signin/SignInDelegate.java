@@ -41,6 +41,7 @@ public class SignInDelegate extends OrangeDelegate {
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
         initTabLayout();
         initViewPager();
+        setTitle("登陆");
     }
 
     private void initTabLayout(){

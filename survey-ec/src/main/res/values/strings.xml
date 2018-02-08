@@ -52,6 +52,7 @@
     <string name="write_phone_et">请输入收货人电话</string>
     <string name="write_ok">确定</string>
     <string name="surver_top">调研详情</string>
+    <string name="surver_detail_top">问卷详情</string>
 
     <!--网络连接状态-->
     <string name="network_connettions_error">请检查您的网络</string>

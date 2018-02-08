@@ -1,30 +1,30 @@
-package com.cby.survey.ec.sign.signin;
+package com.cby.survey.ec.main.index.survey;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.cby.orange.delegate.OrangeDelegate;
 import com.cby.survey.ec.R;
-import com.cby.survey.ec.R2;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
- * Created by baiyanfang on 2018/2/1.
+ * Created by baiyanfang on 2018/2/8.
  */
 
-public class ForgetDelegate extends OrangeDelegate {
+public class SurveyDetailDelegate extends OrangeDelegate {
+
+
+    RecyclerView mRecyclerView = null;
+
 
     @Override
     public Object setLayout() {
-        return R.layout.delegate_forget_password;
+        return R.layout.delegate_survey_detail;
     }
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-        setTitle("忘记密码");
-        setBackBtn();
+
     }
 }

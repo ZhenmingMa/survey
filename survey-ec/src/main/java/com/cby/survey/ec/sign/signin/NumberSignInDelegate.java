@@ -64,6 +64,8 @@ public class NumberSignInDelegate extends OrangeDelegate {
                         @Override
                         public void onNext(String s) {
                             SignHandler.onSignIn(s, mISignListener);
+
+
                         }
 
                     });
@@ -111,10 +113,10 @@ public class NumberSignInDelegate extends OrangeDelegate {
         boolean isPass = true;
 
         if (RegexUtils.isMobileExact(phone)) {
+            mPhone.setError(null);
+        } else {
             mPhone.setError("手机号码错误");
             isPass = false;
-        } else {
-            mPhone.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 6) {

@@ -6,42 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/app_main"
-        android:paddingTop="20dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/icon_sign_up_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:text="{fa-angle-left}"
-                android:textColor="@color/white"
-                android:textSize="30sp" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp"
-                android:text="@string/login_noname"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
-        </RelativeLayout>
-
-    </android.support.v7.widget.Toolbar>
-
-
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

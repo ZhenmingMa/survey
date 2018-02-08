@@ -23,10 +23,6 @@ public class SignUpDelegate extends OrangeDelegate{
         getSupportDelegate().pop();
     }
 
-    @OnClick(R2.id.icon_sign_up_back)
-    void onClickIconBack(){
-        getSupportDelegate().pop();
-    }
 
     @Override
     public Object setLayout() {
@@ -35,6 +31,8 @@ public class SignUpDelegate extends OrangeDelegate{
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-
+        setTitle("注册");
+        setBackBtn();
     }
+
 }

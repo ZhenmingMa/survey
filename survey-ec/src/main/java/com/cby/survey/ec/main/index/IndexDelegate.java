@@ -12,7 +12,6 @@ import com.cby.survey.ec.R;
 import com.cby.survey.ec.R2;
 
 
-
 import butterknife.BindView;
 
 /**
@@ -44,7 +43,8 @@ public class IndexDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-        mRefreshHandler =  IndexRefreshHandler.create(mRefreshLayout,mRecyclerView,new IndexDataConvert(),getContext());
+        setTitle("首页");
+        mRefreshHandler = IndexRefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConvert(), getContext());
 
     }
 
@@ -56,7 +56,8 @@ public class IndexDelegate extends BottomItemDelegate {
     private void initRecycleView() {
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(manager);
-
+        mRecyclerView.addOnItemTouchListener(new IndexItemClickListener(this));
     }
+
 
 }

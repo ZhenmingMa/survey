@@ -3,15 +3,27 @@ package com.cby.orange.delegate;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.AppCompatTextView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.cby.orange.R;
 import com.cby.orange.activites.ProxyActivity;
 import com.cby.orange.utils.log.OrangeLogger;
+import com.joanzapata.iconify.widget.IconTextView;
+import com.orhanobut.logger.Logger;
+
+import java.sql.DriverManager;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -21,7 +33,6 @@ import me.yokeyword.fragmentation.SupportFragmentDelegate;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 /**
- *
  * Created by Ma on 2017/11/28.
  */
 
@@ -35,7 +46,57 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
 
     public abstract Object setLayout();
 
-    public abstract void onBindView(@Nullable Bundle savedInstanceState,View rootView);
+    public abstract void onBindView(@Nullable Bundle savedInstanceState, View rootView);
+
+
+    View titleBarView;
+    private IconTextView back;
+    private AppCompatTextView title;
+    private AppCompatTextView right;
+
+    protected void setTitle(String msg) {
+        if (title != null) {
+            title.setText(msg);
+            titleBarView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    protected void setTitleRight(String msg) {
+        if (right != null) {
+            right.setText(msg);
+            titleBarView.setVisibility(View.VISIBLE);
+            right.setVisibility(View.VISIBLE);
+        }
+    }
+
+
+    /**
+     * sometime you want to define back event
+     */
+    protected void setBackBtn() {
+        if (back != null) {
+            back.setVisibility(View.VISIBLE);
+            back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getSupportDelegate().pop();
+                }
+            });
+        } else {
+            OrangeLogger.e("error", "back is null ,please check out");
+        }
+
+    }
+
+    protected void setBackClickListener(View.OnClickListener l) {
+        if (back != null) {
+            back.setVisibility(View.VISIBLE);
+            back.setOnClickListener(l);
+        } else {
+            OrangeLogger.e("error", "back is null ,please check out");
+        }
+
+    }
 
 
     @Override
@@ -67,20 +128,46 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View rootView;
-        if (setLayout() instanceof Integer){
-            rootView = inflater.inflate((Integer) setLayout(),container,false);
-        }else if (setLayout() instanceof View){
+
+        final LinearLayout linearLayout = initTitleBar();
+
+        if (setLayout() instanceof Integer) {
+            rootView = inflater.inflate((Integer) setLayout(), container, false);
+        } else if (setLayout() instanceof View) {
             rootView = (View) setLayout();
-        }else{
+        } else {
             throw new ClassCastException("setLayout() type must be int or view!");
         }
+        linearLayout.addView(rootView);
 
-        mUnbinder = ButterKnife.bind(this,rootView);
-        onBindView(savedInstanceState,rootView);
-        return rootView;
+        mUnbinder = ButterKnife.bind(this, linearLayout);
+        onBindView(savedInstanceState, linearLayout);
+        return linearLayout;
     }
 
-    public ProxyActivity getProxyActivity(){
+
+    @NonNull
+    private LinearLayout initTitleBar() {
+
+        LinearLayout titlebarLayout = new LinearLayout(getContext());
+        titlebarLayout.setOrientation(LinearLayout.VERTICAL);
+        titleBarView = View.inflate(getContext(), R.layout.title_bar, null);
+        titleBarView.setVisibility(View.GONE);
+        RelativeLayout titleBar = titleBarView.findViewById(R.id.title_bar_content);
+
+        title = titleBarView.findViewById(R.id.title_name);
+        back = titleBarView.findViewById(R.id.icon_title_bar_back);
+        back.setVisibility(View.GONE);
+        right = titleBarView.findViewById(R.id.title_bar_right);
+        right.setVisibility(View.GONE);
+        ViewGroup.LayoutParams lp_title = titleBar.getLayoutParams();
+        titleBarView.setLayoutParams(lp_title);
+        titlebarLayout.addView(titleBarView);
+        return titlebarLayout;
+    }
+
+
+    public ProxyActivity getProxyActivity() {
         return (ProxyActivity) _mActivity;
     }
 
@@ -111,7 +198,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mUnbinder != null){
+        if (mUnbinder != null) {
             mUnbinder.unbind();
         }
     }
@@ -120,7 +207,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
     public void onDestroy() {
         DELEGATE.onDestroy();
         super.onDestroy();
-        OrangeLogger.e("onDestroy",this.getClass().getName());
+        OrangeLogger.e("onDestroy", this.getClass().getName());
     }
 
 

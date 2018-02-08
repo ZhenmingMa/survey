@@ -112,6 +112,7 @@ public class IndexRefreshHandler implements
                         BEAN.setTotal(jsonObject.getInteger("totalElements"))
                                 .setPageSize(jsonObject.getInteger("size"));
                         //设置adapter
+                        OrangeLogger.e("",s);
                         mAdapter = new IndexAdapter(new IndexDataConvert().setJsonData(s).convert());
                         mAdapter.setOnLoadMoreListener(IndexRefreshHandler.this, RECYCLERVIEW);
 

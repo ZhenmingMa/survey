@@ -1,6 +1,7 @@
 package com.cby.survey.ec.main.index;
 
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.blankj.utilcode.util.TimeUtils;
@@ -32,41 +33,45 @@ public class IndexDataConvert extends DataConverter {
             final int id = data.getInteger("id");
             final String name = data.getString("name");
             final double bonus = data.getDouble("bonus");
-            final String age = "年龄:"+data.getString("age");
-            final String city = "坐标:"+data.getString("city");
+            final String age = "年龄:" + data.getString("age");
+            final String city = "坐标:" + data.getString("city");
             final String recent = data.getString("recent");
             final int questions = data.getInteger("questions");
             final String count = data.getString("count");
 
             final Date createTime = data.getDate("createTime");
+            final Date endTime = data.getDate("createTime");
 
             final String createTimeStr = TimeUtils.date2String(createTime);
+
+            final String endTimeStr = TimeUtils.date2String(endTime);
 
             final int sex = data.getInteger("sex");
             final String sexStr;
 
             if (sex == 1) {
-                sexStr ="性别:"+ "男";
+                sexStr = "性别:" + "男";
             } else {
-                sexStr ="性别:"+ "女";
+                sexStr = "性别:" + "女";
             }
 
             MultipleItemEntity entity = MultipleItemEntity.builder()
-                    .setField(MultipleteFields.ITEM_TYPE,IndexItemType.SURVEY_ITEM)
+                    .setField(MultipleteFields.ITEM_TYPE, IndexItemType.SURVEY_ITEM)
                     .setField(MultipleteFields.ID, id)
                     .setField(MultipleteFields.NAME, name)
                     .setField(IndexItemFields.AGE, age)
-                    .setField(IndexItemFields.BONUS, bonus+"")
+                    .setField(IndexItemFields.BONUS, bonus + "")
                     .setField(IndexItemFields.SEX, sexStr)
                     .setField(IndexItemFields.CITY, city)
                     .setField(IndexItemFields.RECENT, recent)
                     .setField(IndexItemFields.QUESTIONS, questions)
                     .setField(IndexItemFields.COUNT, count)
                     .setField(IndexItemFields.CREATETIME, createTimeStr)
+                    .setField(IndexItemFields.ENDTIME, endTimeStr)
                     .build();
             ENTITYS.add(entity);
         }
-        ENTITYS.size();
+        OrangeLogger.e("test", JSON.toJSONString(ENTITYS));
         return ENTITYS;
     }
 }
